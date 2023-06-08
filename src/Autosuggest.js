@@ -718,7 +718,14 @@ export default class Autosuggest extends Component {
 
             const highlightedSuggestion = this.getHighlightedSuggestion();
 
-            if (isOpen && !alwaysRenderSuggestions) {
+            const keepSuggestionsOnSelect = this.props.shouldKeepSuggestionsOnSelect(
+              highlightedSuggestion
+            );
+
+            if (
+              isOpen &&
+              !(alwaysRenderSuggestions || keepSuggestionsOnSelect)
+            ) {
               this.closeSuggestions();
             }
 
